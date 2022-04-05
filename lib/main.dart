@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: CupertinoPage()
-        //home: HelloPage('Hello World')
+        //home: CupertinoPage()
+        home: HelloPage('Hello World')
     );
   }
 }
@@ -59,6 +59,7 @@ class _HelloPageState extends State<HelloPage> {
               children: <Widget>[
                 Text(_message,  style: TextStyle(fontSize: 30)),
                 Text('$_counter',  style: TextStyle(fontSize: 30)),
+
               ],
             )
         ));
