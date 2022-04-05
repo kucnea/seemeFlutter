@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'cuperino_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HelloPage('Hello World')
+      home: CupertinoPage()
+        //home: HelloPage('Hello World')
     );
   }
 }
