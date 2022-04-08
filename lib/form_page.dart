@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:seeme/board_page.dart';
 import 'package:seeme/camera_page.dart';
+import 'package:seeme/chat_page.dart';
 
 class FormPage extends StatefulWidget {
   const FormPage({Key? key}) : super(key: key);
@@ -13,8 +15,8 @@ class _FormPageState extends State<FormPage> {
 
   List _pages = [
     CameraPage(),
-    Text('page2'),
-    Text('page3'),
+    BoardPage(),
+    ChatPage(),
   ];
 
   @override
