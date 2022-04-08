@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Seeme Project',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primaryColor: Colors.white, colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey).copyWith(secondary: Colors.black),
+        brightness: Brightness.dark,
       ),
         home: RootPage(),
     );

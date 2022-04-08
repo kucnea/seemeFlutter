@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seeme/camera_page.dart';
 
 class BoardPage extends StatefulWidget {
   const BoardPage({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class _BoardPageState extends State<BoardPage> {
   int _selectedIndex = 0;
 
   List _pages = [
-    Text('page1'),
+    CameraPage(),
     Text('page2'),
     Text('page3'),
   ];
@@ -19,6 +20,10 @@ class _BoardPageState extends State<BoardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title:
+        Text('See Me', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,),),
+      ),
       body: Center(child: _pages[_selectedIndex],),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onItemTapped,
