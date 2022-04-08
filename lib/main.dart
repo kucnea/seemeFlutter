@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'cuperino_page.dart';
+import 'package:seeme/root_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,70 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Seeme Project',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-        //home: CupertinoPage()
-        home: HelloPage('Hello World')
+        home: RootPage(),
     );
   }
 }
 
-class HelloPage extends StatefulWidget {
-  // const HelloPage({Key? key}) : super(key: key);
-  final String title;
-  HelloPage(this.title);
-
-  @override
-  State<HelloPage> createState() => _HelloPageState();
-}
-
-class _HelloPageState extends State<HelloPage> {
-  String _message = 'Hello World';
-  int _counter = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          child : Icon(Icons.add),
-          onPressed: _changeMessage),
-        appBar : AppBar(
-          title : Text(widget.title),
-        ),
-        body : Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(_message,  style: TextStyle(fontSize: 30)),
-                Text('$_counter',  style: TextStyle(fontSize: 30)),
-                RaisedButton(
-                    child: Text('화면이동'),
-                    onPressed: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => CupertinoPage()))
-                    })
-              ],
-            )
-        ));
-  }
-
-  void _changeMessage() {
-    setState(() {
-      _message = '헬로 월드';
-      _counter++;
-    });
-  }
-}
 
