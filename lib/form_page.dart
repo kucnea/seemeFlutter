@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:seeme/board_page.dart';
 import 'package:seeme/camera_page.dart';
 import 'package:seeme/chatroom_page.dart';
+import 'package:seeme/login_page.dart';
 
 class FormPage extends StatefulWidget {
   const FormPage({Key? key}) : super(key: key);
