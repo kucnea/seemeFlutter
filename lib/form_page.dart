@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:seeme/board_page.dart';
 import 'package:seeme/camera_page.dart';
-import 'package:seeme/chat_page.dart';
+import 'package:seeme/chatroom_page.dart';
 
 class FormPage extends StatefulWidget {
   const FormPage({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _FormPageState extends State<FormPage> {
   List _pages = [
     CameraPage(),
     BoardPage(),
-    ChatPage(),
+    ChatRoomPage(),
   ];
 
   @override
@@ -26,6 +26,10 @@ class _FormPageState extends State<FormPage> {
       appBar: AppBar(
         title:
         Text('See Me', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,),),
+        actions: <Widget>[
+          IconButton(onPressed: () {}, icon: Icon(Icons.person)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.login))
+        ],
       ),
 
 

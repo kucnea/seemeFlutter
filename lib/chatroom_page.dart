@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:seeme/chat_detail_page.dart';
 
-class ChatPage extends StatefulWidget {
-  const ChatPage({Key? key}) : super(key: key);
+class ChatRoomPage extends StatefulWidget {
+  const ChatRoomPage({Key? key}) : super(key: key);
 
   @override
-  State<ChatPage> createState() => _ChatPageState();
+  State<ChatRoomPage> createState() => _ChatRoomPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatRoomPageState extends State<ChatRoomPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: <Widget>[
           Row(
-           mainAxisAlignment: MainAxisAlignment.start,
+           mainAxisAlignment: MainAxisAlignment.spaceBetween,
            children: <Widget>[
              SizedBox(
                width: 130,
