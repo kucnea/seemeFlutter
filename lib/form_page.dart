@@ -56,7 +56,8 @@ class _FormPageState extends State<FormPage> {
         BottomNavigationBarItem(icon: Icon(Icons.camera_alt), label: 'AI 카메라'),
         BottomNavigationBarItem(icon: Icon(Icons.book_outlined), label: '도움게시판'),
         BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline), label: '메신저'),
-      ],),
+      ],
+      ),
     );
   }
 
