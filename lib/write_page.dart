@@ -73,18 +73,8 @@ class _WritePageState extends State<WritePage>{
             ],
           ),
         ),
-
       ),
 
-      // Container(padding: EdgeInsets.all(8),
-      //     child: SafeArea(
-      //       child: SingleChildScrollView(
-      //
-      //
-      //
-      //       ),
-      //     )
-      // ),
 
       bottomNavigationBar: BottomNavigationBar(
         fixedColor: Colors.yellow,
