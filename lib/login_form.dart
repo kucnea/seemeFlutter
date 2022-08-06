@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:seeme/board_page.dart';
+import 'package:seeme/form_page.dart';
 import 'package:seeme/join_page.dart';
+import 'package:seeme/util/validator_util.dart';
+import 'package:validators/validators.dart';
 
 import 'components/custom_elevated_button.dart';
 import 'components/custom_text_form_field.dart';
@@ -42,9 +46,7 @@ class _LoginFormPage extends State<LoginFormPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CustomTextFormField(hint: "아이디를 입력하세요",fnValidator: (value){
-                      print(value); // 이런식으로 로그 찍어볼 수 있음.
-                  },),
+                  child: CustomTextFormField(hint: "아이디를 입력하세요",fnValidator: userid_validate(),),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -55,13 +57,16 @@ class _LoginFormPage extends State<LoginFormPage> {
 
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CustomElevatedButton(text: "로그인", fnPageRoute: () {},),
+                  child: CustomElevatedButton(text: "로그인", fnPageRoute: () {
+                    if(_formKey.currentState!.validate()){
+                      Get.to(FormPage());
+                    }
+                  },),
                 ),
 
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CustomElevatedButton(text: "회원가입", fnPageRoute: () {
-                    _formKey.currentState!.validate();
                     Get.to(JoinPage());
                   } ),
                   ),
