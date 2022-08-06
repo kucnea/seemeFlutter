@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:seeme/login_form.dart';
-import 'package:seeme/login_page.dart';
+import 'package:seeme/user/login_form.dart';
+import 'package:seeme/user/login_page.dart';
 import 'package:seeme/util/validator_util.dart';
 
-import 'components/custom_elevated_button.dart';
-import 'components/custom_text_form_field.dart';
+import '../components/custom_elevated_button.dart';
+import '../components/custom_text_form_field.dart';
 
 class JoinPage extends StatefulWidget {
   const JoinPage({Key? key}) : super(key: key);

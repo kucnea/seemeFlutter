@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'board_page.dart';
-import 'camera_page.dart';
-import 'chatroom_page.dart';
+import '../camera/camera_page.dart';
+import '../chat/chatroom_page.dart';
 
 class WritePage extends StatefulWidget {
   @override

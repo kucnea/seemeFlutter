@@ -2,9 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-import 'board_page.dart';
-import 'components/custom_elevated_button.dart';
-import 'form_page.dart';
+import '../board/board_page.dart';
+import '../components/custom_elevated_button.dart';
+import '../form_page.dart';
 import 'login_form.dart';
 
 class LoginPage extends StatelessWidget {

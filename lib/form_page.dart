@@ -1,18 +1,26 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
-import 'package:seeme/board_page.dart';
-import 'package:seeme/camera_page.dart';
-import 'package:seeme/chatroom_page.dart';
-import 'package:seeme/login_page.dart';
+import 'package:seeme/board/board_page.dart';
+import 'package:seeme/camera/camera_page.dart';
+import 'package:seeme/chat/chatroom_page.dart';
+import 'package:seeme/user/login_page.dart';
+import 'package:seeme/sized.dart';
 
 class FormPage extends StatefulWidget {
-  const FormPage({Key? key}) : super(key: key);
+
+  // const FormPage({Key? key}) : super(key: key);
 
   @override
   State<FormPage> createState() => _FormPageState();
 }
 
 class _FormPageState extends State<FormPage> {
+
   int _selectedIndex = 0;
+
+
+
 
   List _pages = [
     CameraPage(),
@@ -20,9 +28,12 @@ class _FormPageState extends State<FormPage> {
     ChatRoomPage(),
   ];
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: _drawer(context),
 
       appBar: AppBar(
         title:
@@ -61,10 +72,47 @@ class _FormPageState extends State<FormPage> {
     );
   }
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int pageIndex) {
     setState(() {
-      _selectedIndex = index;
+      _selectedIndex = pageIndex;
     });
+  }
+
+  Widget _drawer(BuildContext context){
+    return Container(
+      width: getDrawerWidth(context),
+      height: double.infinity,
+      color: Colors.grey,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextButton(
+                  onPressed: () {},
+                  child: Text("회원 정보",
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),)
+              ),
+
+              TextButton(
+                  onPressed: () {},
+                  child: Text("내 글 보기",
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),)
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
 }
