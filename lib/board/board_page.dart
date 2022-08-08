@@ -5,7 +5,7 @@ import 'package:seeme/board/board_detail_page.dart';
 import 'package:seeme/board/write_page.dart';
 
 class BoardPage extends StatefulWidget {
-  // const BoardPage({Key? key}) : super(key: key);
+  const BoardPage({Key? key}) : super(key: key);
 
   @override
   State<BoardPage> createState() => _BoardPageState();
@@ -19,18 +19,17 @@ class _BoardPageState extends State<BoardPage> {
       child:
       Column(children: <Widget>[
         Center(child: Text('도움게시판\n', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),),),
-        
-        // 왜 인지 화면에 안나옴
+
         ListView.separated(
             shrinkWrap: true,
             itemCount: 3,
             itemBuilder: (context, index) {
               return ListTile(
                 // onTap: (){
-                //   Get.to(BoardDetailPage(), arguments: "$index 데이터"); // 생성자에 넣을 수 있는데 StateFul에서는 방식을 모르겠음.
+                //   Get.to(BoardDetailPage(), arguments: "$index 데이터");
                 // },
                 onTap: (){
-                  Get.to(BoardDetailPage(index), arguments: "빈값"); // 생성자에 넣을 수 있는데 StateFul에서는 방식을 모르겠음.
+                  Get.to(BoardDetailPage(index: index), arguments: "argument");
                 },
                 title: Text("제목1", style: TextStyle(color: Colors.white ,fontSize: 30.0, fontWeight: FontWeight.bold),),
                 leading: Text("1"),

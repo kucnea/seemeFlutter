@@ -5,19 +5,20 @@ import 'package:seeme/board/board_page.dart';
 import 'package:seeme/form_page.dart';
 
 class BoardDetailPage extends StatefulWidget {
-  BoardDetailPage(int index);
 
-  get index => null;
+  final int index;
+
+  const BoardDetailPage({Key? key, required this.index }) : super(key: key);
 
   @override
-  State<BoardDetailPage> createState() => _BoardDetailPageState(index);
+  _BoardDetailPageState createState() => _BoardDetailPageState(this.index);
 
 }
 
 class _BoardDetailPageState extends State<BoardDetailPage> {
-  _BoardDetailPageState(index);
 
-  get index => null;
+  final int index;
+  _BoardDetailPageState(this.index);
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +34,7 @@ class _BoardDetailPageState extends State<BoardDetailPage> {
           Padding(padding: const EdgeInsets.all(20)),
           // Text("제목! $index $data", style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),),
           Text("제목! $index $data", style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),),
+          // Text("제목! $widget.index $data", style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),),
           Padding(padding: const EdgeInsets.all(10)),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -57,7 +59,7 @@ class _BoardDetailPageState extends State<BoardDetailPage> {
           Padding(padding: const EdgeInsets.all(5)),
           Expanded(
             child: SingleChildScrollView(
-              child: Text("내용"*500, style: TextStyle(fontSize: 25.0),),
+              child: Text("내용"*10, style: TextStyle(fontSize: 25.0),),
             ),
           )
 
