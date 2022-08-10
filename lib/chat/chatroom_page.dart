@@ -44,7 +44,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
           itemBuilder: (context, index) {
             return ListTile(
               onTap: (){
-                Get.to(ChatDetailPage());
+                Get.to(ChatDetailPage(), arguments: "chatRoom_id");
               },
               // leading: Image.network('https://cdn.pixabay.com/photo/2022/04/04/18/03/bird-7111988_960_720.jpg',),
               title: Row(
