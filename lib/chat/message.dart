@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seeme/chat/chat_cloud.dart';
 
 class Messages extends StatelessWidget{
 
@@ -13,7 +14,7 @@ class Messages extends StatelessWidget{
                 reverse: true,
                 itemCount: 2,
                 itemBuilder: (context, index){
-                  return Text("첫번째 메세지");
+                  return ChatCloud("첫번째 메세지","유저아이디",false);
                 },
             ),
           )
