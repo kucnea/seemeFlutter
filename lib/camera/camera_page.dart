@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:seeme/camera/take_picture_screen.dart';
 
 import 'view_camera.dart';
 

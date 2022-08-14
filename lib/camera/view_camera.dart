@@ -47,22 +47,27 @@ class _ViewCameraState extends State<ViewCamera> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("카메라 페이지"),
-        MaterialButton(
-          color: Colors.grey,
-          child: Text("갤러리에서 사진 가져오기"),
-          onPressed: (){ pickImageFromGallery(); },
-        ),
-        MaterialButton(
-          color: Colors.grey,
-          child: Text("카메라로 사진 찍기"),
-          onPressed: (){ pickImageFromCamera(); },
-        ),
-        MaterialButton(
-          color: Colors.grey,
-          child: Text("초기화"),
-          onPressed: (){
-            setState(()=> this.image = null); },
+        Row(
+          children: [
+            MaterialButton(
+              color: Colors.grey,
+              child: Text("갤러리", style: TextStyle(fontSize: 30),),
+              onPressed: (){ pickImageFromGallery(); },
+            ),
+            Padding(padding: EdgeInsets.all(10)),
+            MaterialButton(
+              color: Colors.grey,
+              child: Text("카메라", style: TextStyle(fontSize: 30),),
+              onPressed: (){ pickImageFromCamera(); },
+            ),
+            Padding(padding: EdgeInsets.all(10)),
+            MaterialButton(
+              color: Colors.grey,
+              child: Text("초기화", style: TextStyle(fontSize: 30),),
+              onPressed: (){
+                setState(()=> this.image = null); },
+            ),
+          ],
         ),
         SizedBox(height: 30,),
         image != null? Image.file(image!) : Text("선택된 이미지가 없습니다.", style: TextStyle(fontSize: 30.0),),
