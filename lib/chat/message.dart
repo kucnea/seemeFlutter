@@ -12,7 +12,7 @@ class Messages extends StatelessWidget{
           Expanded(
               child: ListView.builder(
                 reverse: true,
-                itemCount: 2,
+                itemCount: 1,
                 itemBuilder: (context, index){
                   return ChatCloud("첫번째 메세지","유저아이디",false);
                 },
