@@ -1,11 +1,11 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
-import 'package:seeme/board/board_page.dart';
-import 'package:seeme/camera/camera_page.dart';
-import 'package:seeme/chat/chatroom_page.dart';
-import 'package:seeme/user/login_page.dart';
-import 'package:seeme/sized.dart';
+import 'package:seeme/Screens/sized.dart';
+
+import 'board/board_page.dart';
+import 'camera/camera_page.dart';
+import 'chat/chatroom_page.dart';
 
 class FormPage extends StatefulWidget {
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:seeme/chat/chat_cloud.dart';
+import 'chat_cloud.dart';
 
 class Messages extends StatelessWidget{
 

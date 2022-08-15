@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:seeme/board/board_detail_page.dart';
-import 'package:seeme/board/write_page.dart';
+import 'package:seeme/Screens/board/write_page.dart';
+
+import 'board_detail_page.dart';
 
 class BoardPage extends StatefulWidget {
   const BoardPage({Key? key}) : super(key: key);

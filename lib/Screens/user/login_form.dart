@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:seeme/board/board_page.dart';
-import 'package:seeme/form_page.dart';
-import 'package:seeme/user/join_page.dart';
-import 'package:seeme/util/validator_util.dart';
-import 'package:validators/validators.dart';
 
 import '../components/custom_elevated_button.dart';
 import '../components/custom_text_form_field.dart';
+import '../form_page.dart';
+import '../util/validator_util.dart';
+import 'join_page.dart';
 
 class LoginFormPage extends StatefulWidget {
   const LoginFormPage({Key? key}) : super(key: key);

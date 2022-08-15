@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:seeme/board/board_page.dart';
-import 'package:seeme/form_page.dart';
+
+import '../form_page.dart';
 
 class BoardDetailPage extends StatefulWidget {
 

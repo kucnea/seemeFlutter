@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:seeme/root_page.dart';
+import 'package:seeme/Screens/root_page.dart';
 
 void main() async {
   runApp(const MyApp());
