@@ -36,7 +36,7 @@ Future<String> addViewer(
    String responseString = response.body;
    if(response.statusCode == 200){
      showDialog(context: context,
-         barrierDismissible: true,
+         barrierDismissible: false,
          builder: (BuildContext dialogContext){
           // print("test responseBody Check");
           // print(response.body);
@@ -125,7 +125,7 @@ class _JoinPage extends State<JoinPage> {
                       //   _viewerModel = viewerModel;
                       // });
 
-                      result == "회원 가입에 성공했습니다."? Get.to(() => LoginFormPage()) : null;
+                      // result == "회원 가입에 성공했습니다."? Get.to(() => LoginFormPage()) : null;
 
                     }),
                   ),
@@ -163,7 +163,7 @@ class MyAlertDialog extends StatelessWidget {
         style: Theme.of(context).textTheme.titleLarge,
       ),
       actions: [
-        FlatButton(onPressed: () => Navigator.pop(context, true), child: Text("확인", style: TextStyle(fontSize: 20.0),))
+        FlatButton(onPressed: () => Get.to(()=>LoginFormPage()), child: Text("확인", style: TextStyle(fontSize: 20.0),))
       ],
       content: Text(
         this.content,
