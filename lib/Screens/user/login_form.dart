@@ -44,11 +44,19 @@ class _LoginFormPage extends State<LoginFormPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CustomTextFormField(hint: "아이디를 입력하세요",fnValidator: userid_validate(),),
+                  child: CustomTextFormField(
+                    hint: "아이디를 입력하세요",
+                    fnValidator: userid_validate(),
+                    controller: null,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CustomTextFormField(hint: "비밀번호를 입력하세요",fnValidator: (value){},),
+                  child: CustomTextFormField(
+                    hint: "비밀번호를 입력하세요",
+                    fnValidator: (value){},
+                    controller: null,
+                  ),
                 ),
 
                 SizedBox(height: 10,),

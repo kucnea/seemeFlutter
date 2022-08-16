@@ -19,10 +19,11 @@ class JoinPage extends StatefulWidget {
 }
 
 
-// 백엔드단에 데이터 연결을 위한 부분.
-Future<ViewerModel?> registerViewer(
+// 데이터 통신을 위한 부분
+Future<ViewerModel?> addViewer(
   String vId, String vPw, BuildContext context) async{
    var Url = "http://localhost:8060/addviewer";
+   // var Url = "http://127.0.0.1:8060/addviewer";
    var response = await http.post(Uri.parse(Url),
    headers:<String, String>{"Content_Type":"application/json"},
    body:jsonEncode(<String, String>{
@@ -45,6 +46,11 @@ Future<ViewerModel?> registerViewer(
 class _JoinPage extends State<JoinPage> {
 
   final _formKey = GlobalKey<FormState>();
+
+  TextEditingController idController = TextEditingController();
+  TextEditingController pwController = TextEditingController();
+
+  ViewerModel? _viewerModel;
 
   @override
   Widget build(BuildContext context){
@@ -72,22 +78,41 @@ class _JoinPage extends State<JoinPage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CustomTextFormField(hint: "아이디를 입력하세요", fnValidator: userid_validate(),),
+                    child: CustomTextFormField(
+                      hint: "아이디를 입력하세요",
+                      fnValidator: userid_validate(),
+                      controller: idController,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CustomTextFormField(hint: "비밀번호를 입력하세요",fnValidator: (value){},),
+                    child: CustomTextFormField(
+                      hint: "비밀번호를 입력하세요",
+                      fnValidator: (value){},
+                      controller: pwController,
+                    ),
                   ),
 
                   SizedBox(height: 10,),
 
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CustomElevatedButton(text: "회원가입", fnPageRoute: () {
+                    child: CustomElevatedButton(text: "회원가입", fnPageRoute: () async {
+                      print("Pressed addViewer Button.");
+                      String vId = idController.text;
+                      String vPw = idController.text;
+                      ViewerModel? viewerModel = null;
                       if(_formKey.currentState!.validate()){
-                        print("여기");
-                        Get.to(LoginFormPage());
+                        print("validate stage");
+                        viewerModel = await addViewer(vId, vPw, context);
+                        print(viewerModel?.vId);
                       }
+                      vId = "";
+                      vPw = "";
+                      setState(() {
+                        _viewerModel = viewerModel;
+                      });
+
                     }),
                   ),
 

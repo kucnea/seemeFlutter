@@ -4,14 +4,16 @@ class CustomTextFormField extends StatelessWidget {
 
   final String hint;
   final fnValidator;
+  final controller;
 
-  const CustomTextFormField({required this.hint, required this.fnValidator});
+  const CustomTextFormField({required this.hint, required this.fnValidator, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: fnValidator,
       obscureText: hint == "비밀번호를 입력하세요" ? true : false,
+      controller: controller,
       decoration: InputDecoration(
         hintText: "$hint",
       ),
