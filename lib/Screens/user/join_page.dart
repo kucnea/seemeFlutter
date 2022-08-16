@@ -125,7 +125,7 @@ class _JoinPage extends State<JoinPage> {
                       //   _viewerModel = viewerModel;
                       // });
 
-                      result == "회원 가입에 성공했습니다."? Get.to(LoginFormPage()) : null;
+                      result == "회원 가입에 성공했습니다."? Get.to(() => LoginFormPage()) : null;
 
                     }),
                   ),
