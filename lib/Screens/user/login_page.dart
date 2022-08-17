@@ -5,7 +5,7 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import '../board/board_page.dart';
 import '../components/custom_elevated_button.dart';
 import '../form_page.dart';
-import 'login_form.dart';
+import 'login_form_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);

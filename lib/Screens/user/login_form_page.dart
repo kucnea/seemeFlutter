@@ -1,11 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:seeme/Model/ViewerModel.dart';
 
 import '../components/custom_elevated_button.dart';
 import '../components/custom_text_form_field.dart';
 import '../form_page.dart';
 import '../util/validator_util.dart';
 import 'join_page.dart';
+import 'package:http/http.dart' as http;
 
 class LoginFormPage extends StatefulWidget {
   const LoginFormPage({Key? key}) : super(key: key);
@@ -14,9 +18,47 @@ class LoginFormPage extends StatefulWidget {
   State<LoginFormPage> createState() => _LoginFormPage();
 }
 
+
+Future<ViewerModel> loginViewer(
+    String vId, String vPw, BuildContext context) async{
+  var _viewer = ViewerModel(vIdx: 0, vId: "", vPw: "");
+  var Url = "http://10.0.2.2:8060/loginviewer";
+  var response = await http.post(Uri.parse(Url),
+      headers:<String, String>{"Content-Type":"application/json"},
+      body:jsonEncode(<String, String>{
+        "vid":vId,
+        "vpw":vPw,
+      }));
+
+  if(response.statusCode == 200){
+    _viewer = json.decode(response.body);
+    print("success");
+    print(_viewer.vId);
+    print("test over");
+    showDialog(context: context,
+      barrierDismissible: false,
+      builder: (BuildContext dialogContext){
+        return MyAlertDialog(title: '알람', content: response.body);
+      },
+    );
+  }else{
+    print("http status is not 200 ok");
+    print(response.statusCode);
+  }
+
+  return _viewer;
+}
+
+
+
+
 class _LoginFormPage extends State<LoginFormPage> {
 
   final _formKey = GlobalKey<FormState>();
+  TextEditingController idController = TextEditingController();
+  TextEditingController pwController = TextEditingController();
+
+  ViewerModel? _viewerModel;
 
   @override
   Widget build(BuildContext context){
@@ -47,7 +89,7 @@ class _LoginFormPage extends State<LoginFormPage> {
                   child: CustomTextFormField(
                     hint: "아이디를 입력하세요",
                     fnValidator: userid_validate(),
-                    controller: null,
+                    controller: idController,
                   ),
                 ),
                 Padding(
@@ -55,7 +97,7 @@ class _LoginFormPage extends State<LoginFormPage> {
                   child: CustomTextFormField(
                     hint: "비밀번호를 입력하세요",
                     fnValidator: (value){},
-                    controller: null,
+                    controller: pwController,
                   ),
                 ),
 
@@ -63,10 +105,28 @@ class _LoginFormPage extends State<LoginFormPage> {
 
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CustomElevatedButton(text: "로그인", fnPageRoute: () {
-                    if(_formKey.currentState!.validate()){
-                      Get.to(FormPage());
+                  child: CustomElevatedButton(text: "로그인", fnPageRoute: () async {
+
+                    String vId = idController.text;
+                    String vPw = pwController.text;
+                    ViewerModel? viewerModel = null;
+
+                    if(_formKey.currentState!.validate()) {
+                      ViewerModel viewerModel = await loginViewer(
+                          vId, vPw, context);
                     }
+                    idController.text = "";
+                    pwController.text = "";
+                    print("login stage last part");
+                    print(viewerModel?.vId);
+
+                    setState(() {
+                      _viewerModel = viewerModel;
+                    });
+                    // if(_formKey.currentState!.validate()){
+                    //   Get.to(FormPage());
+                    // }
+
                   },),
                 ),
 

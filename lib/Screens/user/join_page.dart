@@ -8,7 +8,7 @@ import '../../Model/ViewerModel.dart';
 import '../components/custom_elevated_button.dart';
 import '../components/custom_text_form_field.dart';
 import '../util/validator_util.dart';
-import 'login_form.dart';
+import 'login_form_page.dart';
 import 'package:http/http.dart' as http;
 
 class JoinPage extends StatefulWidget {
@@ -33,7 +33,7 @@ Future<String> addViewer(
      "vpw":vPw,
    }));
 
-   String responseString = response.body;
+   // String responseString = response.body;
    if(response.statusCode == 200){
      showDialog(context: context,
          barrierDismissible: false,
@@ -109,7 +109,7 @@ class _JoinPage extends State<JoinPage> {
                     child: CustomElevatedButton(text: "회원가입", fnPageRoute: () async {
                       // print("Pressed addViewer Button.");
                       String vId = idController.text;
-                      String vPw = idController.text;
+                      String vPw = pwController.text;
                       ViewerModel? viewerModel = null;
                       String result = "";
 
