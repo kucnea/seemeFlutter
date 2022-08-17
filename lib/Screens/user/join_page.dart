@@ -163,7 +163,12 @@ class MyAlertDialog extends StatelessWidget {
         style: Theme.of(context).textTheme.titleLarge,
       ),
       actions: [
-        FlatButton(onPressed: () => Get.to(()=>LoginFormPage()), child: Text("확인", style: TextStyle(fontSize: 20.0),))
+        FlatButton(
+            onPressed: () =>
+            this.content == "회원 가입에 성공했습니다."?
+            Get.to(()=>LoginFormPage()) :
+            Navigator.pop(context),
+            child: Text("확인", style: TextStyle(fontSize: 20.0),))
       ],
       content: Text(
         this.content,
