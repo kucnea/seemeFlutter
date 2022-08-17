@@ -31,14 +31,17 @@ Future<ViewerModel> loginViewer(
       }));
 
   if(response.statusCode == 200){
-    _viewer = json.decode(response.body);
+    var jsonData = json.decode(response.body);
+    var content = "";
+    _viewer.vId = jsonData["vid"];
     print("success");
     print(_viewer.vId);
+    _viewer.vId == null? content = "로그인에 실패했습니다." : content = _viewer.vId+"님 환영합니다.";
     print("test over");
     showDialog(context: context,
       barrierDismissible: false,
       builder: (BuildContext dialogContext){
-        return MyAlertDialog(title: '알람', content: response.body);
+        return MyAlertDialog(title: '알람', content: content);
       },
     );
   }else{
