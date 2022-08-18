@@ -19,9 +19,9 @@ class LoginFormPage extends StatefulWidget {
 }
 
 
-Future<ViewerModel> loginViewer(
+Future<ViewerModel?> loginViewer(
     String vId, String vPw, BuildContext context) async{
-  var _viewer = ViewerModel(vIdx: 0, vId: "", vPw: "");
+  var _viewer = ViewerModel(vIdx: 0, vId: "", vPw: "", vNick: "");
   var Url = "http://10.0.2.2:8060/loginviewer";
   var response = await http.post(Uri.parse(Url),
       headers:<String, String>{"Content-Type":"application/json"},
@@ -33,11 +33,19 @@ Future<ViewerModel> loginViewer(
   if(response.statusCode == 200){
     var jsonData = json.decode(response.body);
     var content = "";
-    _viewer.vId = jsonData["vid"];
-    print("success");
+
+    if(jsonData["vid"]==null){
+      _viewer.vId = "";
+      _viewer.vNick = "";
+    }else{
+      _viewer.vId = jsonData["vid"];
+      _viewer.vNick = jsonData["vNick"];
+    }
+    print("loginViewer stage final");
     print(_viewer.vId);
-    _viewer.vId == null? content = "로그인에 실패했습니다." : content = _viewer.vId+"님 환영합니다.";
-    print("test over");
+
+    _viewer.vId.length == 0? content = "로그인에 실패했습니다." : content = _viewer.vId+"님 환영합니다.";
+
     showDialog(context: context,
       barrierDismissible: false,
       builder: (BuildContext dialogContext){
@@ -115,7 +123,7 @@ class _LoginFormPage extends State<LoginFormPage> {
                     ViewerModel? viewerModel = null;
 
                     if(_formKey.currentState!.validate()) {
-                      ViewerModel viewerModel = await loginViewer(
+                      ViewerModel? viewerModel = await loginViewer(
                           vId, vPw, context);
                     }
                     idController.text = "";

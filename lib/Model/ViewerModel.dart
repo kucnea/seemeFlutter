@@ -10,13 +10,15 @@ class ViewerModel{
   int vIdx;
   String vId;
   String vPw;
+  String vNick;
 
-  ViewerModel({required this.vIdx,required this.vId,required this.vPw});
+  ViewerModel({required this.vIdx,required this.vId,required this.vPw, required this.vNick});
 
   factory ViewerModel.fromJson(Map<String,dynamic> json)=> ViewerModel(
     vIdx: json["vidx"],
     vId: json["vid"],
-    vPw: json["vpw"]
+    vPw: json["vpw"],
+    vNick: json["vNick"]
   );
 
   Map<String,dynamic> toJson() =>{
