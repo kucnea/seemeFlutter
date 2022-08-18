@@ -39,17 +39,17 @@ Future<ViewerModel?> loginViewer(
       _viewer.vNick = "";
     }else{
       _viewer.vId = jsonData["vid"];
-      _viewer.vNick = jsonData["vNick"];
+      _viewer.vNick = jsonData["vnick"];
     }
     print("loginViewer stage final");
     print(_viewer.vId);
 
-    _viewer.vId.length == 0? content = "로그인에 실패했습니다." : content = _viewer.vId+"님 환영합니다.";
+    _viewer.vId.length == 0? content = "로그인에 실패했습니다." : content = _viewer.vNick+"님 환영합니다.";
 
     showDialog(context: context,
       barrierDismissible: false,
       builder: (BuildContext dialogContext){
-        return MyAlertDialog(title: '알람', content: content);
+        return LoginAlertDialog(title: '알람', content: content);
       },
     );
   }else{
@@ -156,6 +156,41 @@ class _LoginFormPage extends State<LoginFormPage> {
       ),
       ),
 
+    );
+  }
+}
+
+class LoginAlertDialog extends StatelessWidget {
+  final String title;
+  final String content;
+  final List<Widget> actions;
+
+  LoginAlertDialog({
+    required this.title,
+    required this.content,
+    this.actions = const [],
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text(
+        this.title,
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
+      actions: [
+        FlatButton(
+            onPressed: () =>
+            this.content == "로그인에 실패했습니다."?
+            Navigator.pop(context) :
+            Get.to(()=>FormPage()),
+            child: Text("확인", style: TextStyle(fontSize: 20.0),))
+      ],
+      content: Text(
+        this.content,
+        // style: Theme.of(context).textTheme.bodyLarge,
+        style: TextStyle(fontSize: 25.0),
+      ),
     );
   }
 }

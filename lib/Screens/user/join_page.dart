@@ -22,7 +22,7 @@ class JoinPage extends StatefulWidget {
 // 데이터 통신을 위한 부분
 // Future<ViewerModel> addViewer(
 Future<String> addViewer(
-  String vId, String vPw, BuildContext context) async{
+  String vId, String vNick, String vPw, BuildContext context) async{
    // var Url = "http://localhost:8060/addviewer";
    // 안드로이드 에뮬의 localhost가 pc와 다르므로 하기 url이용
    var Url = "http://10.0.2.2:8060/addviewer";
@@ -30,6 +30,7 @@ Future<String> addViewer(
    headers:<String, String>{"Content-Type":"application/json"},
    body:jsonEncode(<String, String>{
      "vid":vId,
+     "vnick":vNick,
      "vpw":vPw,
    }));
 
@@ -57,6 +58,7 @@ class _JoinPage extends State<JoinPage> {
   bool? addCheck;
 
   TextEditingController idController = TextEditingController();
+  TextEditingController nickController = TextEditingController();
   TextEditingController pwController = TextEditingController();
 
   ViewerModel? _viewerModel;
@@ -96,6 +98,14 @@ class _JoinPage extends State<JoinPage> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CustomTextFormField(
+                      hint: "닉네임을 입력하세요",
+                      fnValidator: usernick_validate(),
+                      controller: nickController,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CustomTextFormField(
                       hint: "비밀번호를 입력하세요",
                       fnValidator: (value){},
                       controller: pwController,
@@ -109,6 +119,7 @@ class _JoinPage extends State<JoinPage> {
                     child: CustomElevatedButton(text: "회원가입", fnPageRoute: () async {
                       // print("Pressed addViewer Button.");
                       String vId = idController.text;
+                      String vNick = nickController.text;
                       String vPw = pwController.text;
                       ViewerModel? viewerModel = null;
                       String result = "";
@@ -116,7 +127,7 @@ class _JoinPage extends State<JoinPage> {
                       if(_formKey.currentState!.validate()){
                         print("validate stage");
                         // viewerModel = await addViewer(vId, vPw, context);
-                        result = await addViewer(vId, vPw, context);
+                        result = await addViewer(vId, vNick, vPw, context);
                         print(viewerModel?.vId);
                       }
                       vId = "";

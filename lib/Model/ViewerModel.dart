@@ -12,7 +12,7 @@ class ViewerModel{
   String vPw;
   String vNick;
 
-  ViewerModel({required this.vIdx,required this.vId,required this.vPw, required this.vNick});
+  ViewerModel({required this.vIdx, required this.vId, required this.vNick, required this.vPw, });
 
   factory ViewerModel.fromJson(Map<String,dynamic> json)=> ViewerModel(
     vIdx: json["vidx"],
@@ -23,12 +23,14 @@ class ViewerModel{
 
   Map<String,dynamic> toJson() =>{
     "vidx":vIdx,
+    "vnick":vNick,
     "vid":vId,
     "vpw":vPw,
   };
 
   String get vid => vId;
   String get vpw => vPw;
+  String get vnick => vNick;
 
 
 }
