@@ -18,7 +18,7 @@ class LoginFormPage extends StatefulWidget {
   State<LoginFormPage> createState() => _LoginFormPage();
 }
 
-
+// 로그인과 관련된 통신
 Future<ViewerModel?> loginViewer(
     String vId, String vPw, BuildContext context) async{
   var _viewer = ViewerModel(vIdx: 0, vId: "", vPw: "", vNick: "");
